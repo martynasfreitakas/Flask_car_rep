@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Services</h1>
+  <ul>
+    {% for service in services %}
+      <li>{{ service.name }} - {{ service.description }}</li>
+    {% endfor %}
+  </ul>
+
+  <h1>Add Service</h1>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.name.label }} {{ form.name() }}
+    {{ form.description.label }} {{ form.description() }}
+    {{ form.cost.label }} {{ form.cost() }}
+    {{ form.car_id.label }} {{ form.car_id() }}
+    {{ form.submit() }}
+  </form>
+{% endblock %}

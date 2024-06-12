@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flashes">
+                {% for message in messages %}
+                    <div class="flash">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <h1>{{ user.username }}</h1>
+    <p>{{ user.email }}</p>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name() }}
+        {{ form.username.label }} {{ form.username() }}
+        {{ form.email.label }} {{ form.email() }}
+        {{ form.phone_number.label }} {{ form.phone_number() }}
+        {{ form.submit() }}
+    </form>
+{% endblock %}
+
+{% block password_change %}
+    <h2>Change Password</h2>
+
+    <form method="POST">
+        {{ password_form.hidden_tag() }}
+        {{ password_form.old_password.label }} {{ password_form.old_password() }}
+        {{ password_form.new_password.label }} {{ password_form.new_password() }}
+        {{ password_form.confirm_password.label }} {{ password_form.confirm_password() }}
+        {{ password_form.submit() }}
+    </form>
+{% endblock %}
